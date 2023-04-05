@@ -101,52 +101,8 @@ export const Buy = styled.div`
     line-height: 2rem;
 
     color: ${(props) => props.theme['base-text']};
-  }
-`
 
-export const Counter = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 0.25rem;
-
-  width: 4.5rem;
-  height: 2.375rem;
-
-  background-color: ${(props) => props.theme['base-button']};
-  border-radius: 6px;
-
-  margin-left: 1.4375rem;
-  padding: 0.5rem;
-
-  & > button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 0.875rem;
-    height: 0.875rem;
-
-    background: transparent;
-    border: none;
-    color: ${(props) => props.theme.purple};
-  }
-
-  & > span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 130%;
-
-    width: 1.25rem;
-
-    color: ${(props) => props.theme['base-title']};
+    margin-right: 1.4375rem;
   }
 `
 

@@ -16,7 +16,9 @@ import {
   PayCard,
   RightWrapper,
   Title,
+  TotalsWrapper,
 } from './styles'
+import { CoffeCard } from './CoffeCard'
 
 export function Checkout() {
   return (
@@ -73,6 +75,9 @@ export function Checkout() {
       </LeftWrapper>
       <RightWrapper>
         <Title>Cafés selecionados</Title>
+        <TotalsWrapper>
+          <CoffeCard />
+        </TotalsWrapper>
       </RightWrapper>
     </Container>
   )

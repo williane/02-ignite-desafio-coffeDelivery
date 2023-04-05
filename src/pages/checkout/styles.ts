@@ -148,3 +148,17 @@ export const ButtonWrapper = styled.div`
 `
 
 export const RightWrapper = styled(BaseWrapper)``
+
+export const TotalsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 31.125rem;
+
+  padding: 2.5rem;
+  margin-top: 0.9375rem;
+
+  background-color: ${(props) => props.theme['base-card']};
+  border-radius: 6px 44px;
+`

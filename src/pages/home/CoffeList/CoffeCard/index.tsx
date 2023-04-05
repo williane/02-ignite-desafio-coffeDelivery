@@ -2,7 +2,6 @@ import {
   Buy,
   CartButton,
   Container,
-  Counter,
   Description,
   ListTags,
   Name,
@@ -11,6 +10,7 @@ import {
 
 import Coffe from '../../../../assets/coffes/expresso_tradicional.svg'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { Counter } from '../../../../components/counter'
 
 export function CoffeCard() {
   return (
@@ -27,15 +27,7 @@ export function CoffeCard() {
       <Buy>
         <span>R$</span>
         <span>9,90</span>
-        <Counter>
-          <button>
-            <Minus size={14} />
-          </button>
-          <span>1</span>
-          <button>
-            <Plus size={14} />
-          </button>
-        </Counter>
+        <Counter height={38} iconSize={14} />
         <CartButton>
           <ShoppingCart size={22} color="#FFFFFF" weight="fill" />
         </CartButton>
