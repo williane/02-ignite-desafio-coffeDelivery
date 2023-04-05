@@ -149,6 +149,14 @@ export const ButtonWrapper = styled.div`
 
 export const RightWrapper = styled(BaseWrapper)``
 
+export const CoffeCardList = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  max-height: 14.25rem;
+  overflow: auto;
+`
+
 export const TotalsWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -161,4 +169,54 @@ export const TotalsWrapper = styled.div`
 
   background-color: ${(props) => props.theme['base-card']};
   border-radius: 6px 44px;
+`
+
+export const Totals = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.75rem;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: ${(props) => props.theme['base-text']};
+
+    & > span:nth-child(1) {
+      font-size: 0.875rem;
+    }
+  }
+
+  & > div:nth-child(3) {
+    font-size: 1.25rem;
+    font-weight: 700;
+
+    color: ${(props) => props.theme['base-subtitle']};
+
+    & > span:nth-child(1) {
+      font-size: 1.25rem;
+    }
+  }
+`
+
+export const ConfirmButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 2.875rem;
+
+  padding: 0.75rem 0.5rem;
+  margin-top: 1.5rem;
+
+  background-color: ${(props) => props.theme.yellow};
+  border: none;
+  border-radius: 6px;
+
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  color: ${(props) => props.theme.white};
 `

@@ -68,4 +68,5 @@ export const Divider = styled.hr`
   border: 1px solid ${(props) => props.theme['base-button']};
 
   margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 `

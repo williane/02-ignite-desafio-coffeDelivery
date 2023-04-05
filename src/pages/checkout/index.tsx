@@ -8,6 +8,8 @@ import {
 import {
   ButtonWrapper,
   CardTitle,
+  CoffeCardList,
+  ConfirmButton,
   Container,
   Form,
   Input,
@@ -16,6 +18,7 @@ import {
   PayCard,
   RightWrapper,
   Title,
+  Totals,
   TotalsWrapper,
 } from './styles'
 import { CoffeCard } from './CoffeCard'
@@ -76,7 +79,25 @@ export function Checkout() {
       <RightWrapper>
         <Title>Cafés selecionados</Title>
         <TotalsWrapper>
-          <CoffeCard />
+          <CoffeCardList>
+            <CoffeCard />
+            <CoffeCard />
+          </CoffeCardList>
+          <Totals>
+            <div>
+              <span>Total de Itens</span>
+              <span>R$ 29,70</span>
+            </div>
+            <div>
+              <span>Entrega</span>
+              <span>R$ 3,50</span>
+            </div>
+            <div>
+              <span>Total</span>
+              <span>R$ 33,20</span>
+            </div>
+          </Totals>
+          <ConfirmButton>Confirmar Pedido</ConfirmButton>
         </TotalsWrapper>
       </RightWrapper>
     </Container>
