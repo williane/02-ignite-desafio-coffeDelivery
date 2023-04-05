@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const HeaderConteiner = styled.nav`
+  position: sticky;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,6 +12,8 @@ export const HeaderConteiner = styled.nav`
 
   margin: 0 auto;
   padding: 2rem 10rem;
+
+  background-color: ${(props) => props.theme.background};
 `
 
 export const Actions = styled.div`
