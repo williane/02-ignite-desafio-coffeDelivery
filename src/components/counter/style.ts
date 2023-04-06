@@ -30,6 +30,11 @@ export const CounterWrapper = styled.div<CounterProps>`
     background: transparent;
     border: none;
     color: ${(props) => props.theme.purple};
+
+    &:hover {
+      color: ${(props) => props.theme['purple-dark']};
+      cursor: pointer;
+    }
   }
 
   & > span {

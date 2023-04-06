@@ -8,7 +8,6 @@ import {
   Tag,
 } from './styles'
 
-import Coffe from '../../../../assets/coffes/expresso_tradicional.svg'
 import { ShoppingCart } from 'phosphor-react'
 import { Counter } from '../../../../components/counter'
 
@@ -24,9 +23,17 @@ interface CoffeProps {
 
 interface CoffeCardProps {
   coffe: CoffeProps
+  quantity: number
+  onRemove: (name: string) => void
+  onAdd: (name: string) => void
 }
 
-export function CoffeCard({ coffe }: CoffeCardProps) {
+export function CoffeCard({
+  coffe,
+  quantity,
+  onAdd,
+  onRemove,
+}: CoffeCardProps) {
   return (
     <Container>
       <img src={coffe.image} alt="" />
@@ -40,8 +47,15 @@ export function CoffeCard({ coffe }: CoffeCardProps) {
       <Buy>
         <span>R$</span>
         <span>{coffe.cost}</span>
-        <Counter height={38} iconSize={14} />
-        <CartButton>
+        <Counter
+          height={38}
+          iconSize={14}
+          CoffeQuantity={quantity}
+          coffeName={coffe.name}
+          onAdd={onAdd}
+          onRemove={onRemove}
+        />
+        <CartButton onClick={() => console.log(coffe.name, quantity)}>
           <ShoppingCart size={22} color="#FFFFFF" weight="fill" />
         </CartButton>
       </Buy>

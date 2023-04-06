@@ -4,16 +4,27 @@ import { CounterWrapper } from './style'
 interface CounterProps {
   iconSize: number
   height: number
+  CoffeQuantity: number
+  coffeName: string
+  onRemove: (name: string) => void
+  onAdd: (name: string) => void
 }
 
-export function Counter({ iconSize, height }: CounterProps) {
+export function Counter({
+  iconSize,
+  height,
+  CoffeQuantity,
+  coffeName,
+  onRemove,
+  onAdd,
+}: CounterProps) {
   return (
     <CounterWrapper buttonHeigth={height}>
-      <button>
+      <button onClick={() => onRemove(coffeName)}>
         <Minus size={iconSize} />
       </button>
-      <span>1</span>
-      <button>
+      <span>{CoffeQuantity || 0}</span>
+      <button onClick={() => onAdd(coffeName)}>
         <Plus size={iconSize} />
       </button>
     </CounterWrapper>
