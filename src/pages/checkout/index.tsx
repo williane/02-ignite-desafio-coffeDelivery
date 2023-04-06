@@ -22,6 +22,7 @@ import {
   TotalsWrapper,
 } from './styles'
 import { CoffeCard } from './CoffeCard'
+import { NavLink } from 'react-router-dom'
 
 export function Checkout() {
   return (
@@ -97,7 +98,9 @@ export function Checkout() {
               <span>R$ 33,20</span>
             </div>
           </Totals>
-          <ConfirmButton>Confirmar Pedido</ConfirmButton>
+          <NavLink to="/success">
+            <ConfirmButton>Confirmar Pedido</ConfirmButton>
+          </NavLink>
         </TotalsWrapper>
       </RightWrapper>
     </Container>

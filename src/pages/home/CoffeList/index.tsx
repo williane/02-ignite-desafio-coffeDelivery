@@ -1,6 +1,8 @@
 import { CoffeCard } from './CoffeCard'
 import { Container, Filters, List, NavBar } from './styles'
 
+import { coffes } from '../../../mock/coffes'
+
 export function CoffeList() {
   return (
     <Container>
@@ -15,17 +17,9 @@ export function CoffeList() {
         </Filters>
       </NavBar>
       <List>
-        <CoffeCard />
-        <CoffeCard />
-        <CoffeCard />
-        <CoffeCard />
-        <CoffeCard />
-        <CoffeCard />
-        <CoffeCard />
-        <CoffeCard />
-        <CoffeCard />
-        <CoffeCard />
-        <CoffeCard />
+        {coffes.map((coffe) => (
+          <CoffeCard key={coffe.name} coffe={coffe} />
+        ))}
       </List>
     </Container>
   )
