@@ -10,7 +10,8 @@ import {
 
 import { ShoppingCart } from 'phosphor-react'
 import { Counter } from '../../../../components/counter'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { CartContext } from '../../../../contexts/cartContext'
 
 type tag = 'tradicional' | 'especial' | 'com leite' | 'alcoólico' | 'gelado'
 
@@ -28,6 +29,7 @@ interface CoffeCardProps {
 
 export function CoffeCard({ coffe }: CoffeCardProps) {
   const [quantity, setQuantity] = useState(0)
+  const { addNewCoffeOnCart } = useContext(CartContext)
 
   function handleAddQuantity() {
     setQuantity((state) => state + 1)
@@ -57,7 +59,10 @@ export function CoffeCard({ coffe }: CoffeCardProps) {
           onAdd={handleAddQuantity}
           onRemove={handleRemoveQuantity}
         />
-        <CartButton onClick={() => console.log(coffe.name, quantity)}>
+        <CartButton
+          onClick={() => addNewCoffeOnCart(coffe.name, quantity, coffe.cost)}
+          disabled={quantity === 0}
+        >
           <ShoppingCart size={22} color="#FFFFFF" weight="fill" />
         </CartButton>
       </Buy>

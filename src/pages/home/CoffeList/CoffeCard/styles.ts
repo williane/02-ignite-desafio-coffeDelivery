@@ -119,4 +119,14 @@ export const CartButton = styled.button`
   border-radius: 6px;
 
   margin-left: 0.5rem;
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
+    background: ${(props) => props.theme.purple};
+    cursor: pointer;
+  }
 `
