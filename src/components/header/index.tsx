@@ -1,10 +1,21 @@
-import Logo from '../../assets/logo.svg'
-import { MapPin, ShoppingCart } from 'phosphor-react'
-import { Actions, Cart, HeaderConteiner, Location } from './styles'
-import { defaultTheme } from '../../styles/themes/default'
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { MapPin, ShoppingCart } from 'phosphor-react'
+import Logo from '../../assets/logo.svg'
+import { defaultTheme } from '../../styles/themes/default'
+import {
+  Actions,
+  Cart,
+  CartQuantity,
+  HeaderConteiner,
+  Location,
+} from './styles'
+import { CartContext } from '../../contexts/cartContext'
 
 export function Header() {
+  const { cart } = useContext(CartContext)
+  const totalCart = cart.length
+
   return (
     <HeaderConteiner>
       <NavLink to="/">
@@ -22,6 +33,7 @@ export function Header() {
               color={defaultTheme['yellow-dark']}
               weight="fill"
             />
+            {totalCart ? <CartQuantity>{totalCart}</CartQuantity> : undefined}
           </Cart>
         </NavLink>
       </Actions>

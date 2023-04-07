@@ -48,6 +48,7 @@ export const Location = styled.div`
 `
 
 export const Cart = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,4 +60,24 @@ export const Cart = styled.div`
 
   background-color: ${(props) => props.theme['yellow-light']};
   border-radius: 6px;
+`
+
+export const CartQuantity = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 1.25rem;
+  height: 1.25rem;
+
+  border-radius: 50%;
+  background-color: ${(props) => props.theme['yellow-dark']};
+  font-weight: 700;
+  color: ${(props) => props.theme.white};
+  font-size: 0.75rem;
 `
