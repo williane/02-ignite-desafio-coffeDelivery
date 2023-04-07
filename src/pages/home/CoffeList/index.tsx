@@ -4,48 +4,7 @@ import { Container, Filters, List, NavBar } from './styles'
 
 import { coffes } from '../../../mock/coffes'
 
-export interface CoffeQuantityProps {
-  name: string
-  quantity: number
-}
-
 export function CoffeList() {
-  const [coffeQuantity, setCoffeQuantity] = useState<CoffeQuantityProps[]>(
-    () => {
-      return coffes.map((coffe) => {
-        return {
-          name: coffe.name,
-          quantity: 0,
-        }
-      })
-    },
-  )
-
-  function handleRemoveCoffeQuantity(name: string) {
-    const newCoffeQuantity = coffeQuantity.map((coffe) => {
-      if (coffe.name === name) {
-        if (coffe.quantity >= 1) {
-          coffe.quantity = coffe.quantity - 1
-        }
-      }
-      return coffe
-    })
-
-    setCoffeQuantity(newCoffeQuantity)
-  }
-
-  function handleAddCoffeQuantity(name: string) {
-    const newCoffeQuantity = coffeQuantity.map((coffe) => {
-      if (coffe.name === name) {
-        coffe.quantity = coffe.quantity + 1
-      }
-
-      return coffe
-    })
-
-    setCoffeQuantity(newCoffeQuantity)
-  }
-
   return (
     <Container>
       <NavBar>
@@ -60,15 +19,7 @@ export function CoffeList() {
       </NavBar>
       <List>
         {coffes.map((coffe) => (
-          <CoffeCard
-            key={coffe.name}
-            coffe={coffe}
-            onAdd={handleAddCoffeQuantity}
-            onRemove={handleRemoveCoffeQuantity}
-            quantity={
-              coffeQuantity.filter((c) => c.name === coffe.name)[0].quantity
-            }
-          />
+          <CoffeCard key={coffe.name} coffe={coffe} />
         ))}
       </List>
     </Container>
