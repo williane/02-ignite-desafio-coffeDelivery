@@ -36,7 +36,13 @@ export function CoffeCard({ coffe }: CoffeCardProps) {
   }
 
   function handleRemoveQuantity() {
-    setQuantity((state) => state - 1)
+    setQuantity((state) => {
+      return state >= 1 ? state - 1 : 0
+    })
+  }
+
+  function handleAddNewCoffeOnCart() {
+    addNewCoffeOnCart(coffe.name, quantity, coffe.cost)
   }
 
   return (
@@ -59,10 +65,7 @@ export function CoffeCard({ coffe }: CoffeCardProps) {
           onAdd={handleAddQuantity}
           onRemove={handleRemoveQuantity}
         />
-        <CartButton
-          onClick={() => addNewCoffeOnCart(coffe.name, quantity, coffe.cost)}
-          disabled={quantity === 0}
-        >
+        <CartButton onClick={handleAddNewCoffeOnCart} disabled={quantity === 0}>
           <ShoppingCart size={22} color="#FFFFFF" weight="fill" />
         </CartButton>
       </Buy>
