@@ -42,7 +42,7 @@ export function CoffeCard({ coffe }: CoffeCardProps) {
   }
 
   function handleAddNewCoffeOnCart() {
-    addNewCoffeOnCart(coffe.name, quantity, coffe.cost)
+    addNewCoffeOnCart(coffe.name, coffe.image, quantity, coffe.cost)
   }
 
   return (

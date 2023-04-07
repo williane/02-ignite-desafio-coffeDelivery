@@ -1,24 +1,35 @@
-import { Action, Container, Details, Divider, TrashButton } from './styles'
-import { Counter } from '../../../components/counter'
-import Coffe from '../../../assets/coffes/expresso_tradicional.svg'
 import { Trash } from 'phosphor-react'
+import { Counter } from '../../../components/counter'
+import { Action, Container, Details, Divider, TrashButton } from './styles'
 
-export function CoffeCard() {
+interface CoffeProps {
+  coffeName: string
+  image: string
+  quantity: number
+  unitCost: number
+  totalCost: number
+}
+
+interface CoffeCardProps {
+  coffe: CoffeProps
+}
+
+export function CoffeCard({ coffe }: CoffeCardProps) {
   return (
     <>
       <Container>
-        <img src={Coffe} alt="" />
+        <img src={coffe.image} alt="" />
         <Details>
-          <span>Expresso Tradicional</span>
+          <span>{coffe.coffeName}</span>
           <Action>
-            <Counter height={32} iconSize={14} />
+            <Counter height={32} iconSize={14} quantity={coffe.quantity} />
             <TrashButton>
               <Trash size={16} color="#8047F8" />
               remover
             </TrashButton>
           </Action>
         </Details>
-        <span>R$ 9,90</span>
+        <span>R$ {coffe.totalCost}</span>
       </Container>
       <Divider />
     </>

@@ -60,6 +60,12 @@ export const TrashButton = styled.button`
   font-size: 0.75rem;
   color: ${(props) => props.theme['base-text']};
   text-transform: uppercase;
+
+  &:hover {
+    background-color: ${(props) => props.theme['base-hover']};
+    color: ${(props) => props.theme['base-subtitle']};
+    cursor: pointer;
+  }
 `
 
 export const Divider = styled.hr`

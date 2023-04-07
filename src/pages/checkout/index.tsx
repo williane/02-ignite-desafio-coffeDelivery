@@ -1,3 +1,5 @@
+import { useContext } from 'react'
+import { NavLink } from 'react-router-dom'
 import {
   Bank,
   CreditCard,
@@ -5,6 +7,9 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react'
+import { CoffeCard } from './CoffeCard'
+
+import { CartContext } from '../../contexts/cartContext'
 import {
   ButtonWrapper,
   CardTitle,
@@ -21,10 +26,15 @@ import {
   Totals,
   TotalsWrapper,
 } from './styles'
-import { CoffeCard } from './CoffeCard'
-import { NavLink } from 'react-router-dom'
 
 export function Checkout() {
+  const { cart } = useContext(CartContext)
+  const totalItemsCost = cart.reduce((acc, cart) => {
+    return (acc += cart.totalCost)
+  }, 0)
+  const deliveryCost = 3.5
+  const totalCost = totalItemsCost + deliveryCost
+
   return (
     <Container>
       <LeftWrapper>
@@ -81,21 +91,22 @@ export function Checkout() {
         <Title>Cafés selecionados</Title>
         <TotalsWrapper>
           <CoffeCardList>
-            <CoffeCard />
-            <CoffeCard />
+            {cart.map((coffe) => (
+              <CoffeCard key={coffe.coffeName} coffe={coffe} />
+            ))}
           </CoffeCardList>
           <Totals>
             <div>
               <span>Total de Itens</span>
-              <span>R$ 29,70</span>
+              <span>R$ {totalItemsCost}</span>
             </div>
             <div>
               <span>Entrega</span>
-              <span>R$ 3,50</span>
+              <span>R$ {deliveryCost}</span>
             </div>
             <div>
               <span>Total</span>
-              <span>R$ 33,20</span>
+              <span>R$ {totalCost}</span>
             </div>
           </Totals>
           <NavLink to="/success">

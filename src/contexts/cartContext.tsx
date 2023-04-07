@@ -2,6 +2,7 @@ import { ReactNode, createContext, useState } from 'react'
 
 interface CartProps {
   coffeName: string
+  image: string
   quantity: number
   unitCost: number
   totalCost: number
@@ -11,6 +12,7 @@ interface CartContextProps {
   cart: CartProps[]
   addNewCoffeOnCart: (
     coffeName: string,
+    image: string,
     quantity: number,
     unitCost: number,
   ) => void
@@ -29,12 +31,13 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
   function addNewCoffeOnCart(
     coffeName: string,
+    image: string,
     quantity: number,
     unitCost: number,
   ) {
     setCart((state) => [
       ...state,
-      { coffeName, quantity, unitCost, totalCost: quantity * unitCost },
+      { coffeName, image, quantity, unitCost, totalCost: quantity * unitCost },
     ])
   }
 
