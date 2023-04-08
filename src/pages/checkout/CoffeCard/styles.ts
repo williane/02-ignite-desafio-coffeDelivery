@@ -10,12 +10,6 @@ export const Container = styled.div`
     width: 4rem;
     height: 4rem;
   }
-
-  & > span {
-    font-weight: 700;
-    line-height: 130%
-    color: ${(props) => props.theme['base-text']};
-  }
 `
 
 export const Details = styled.div`
@@ -28,12 +22,19 @@ export const Details = styled.div`
   height: 3.8125rem;
 
   margin-left: 1.25rem;
-  margin-right: 3.125rem;
+`
 
-  & > span {
-    line-height: 130%
-    color: ${(props) => props.theme['base-subtitle']};
-  }
+export const Div = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100%;
+`
+export const Price = styled.span`
+  font-weight: 700;
+  line-height: 130%
+  color: ${(props) => props.theme['base-text']};
 `
 
 export const Action = styled.div`

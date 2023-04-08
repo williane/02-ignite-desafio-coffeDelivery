@@ -26,6 +26,7 @@ import {
   Totals,
   TotalsWrapper,
 } from './styles'
+import { priceFormatter } from '../../utils/numberFormatter'
 
 export function Checkout() {
   const { cart } = useContext(CartContext)
@@ -98,15 +99,15 @@ export function Checkout() {
           <Totals>
             <div>
               <span>Total de Itens</span>
-              <span>R$ {totalItemsCost}</span>
+              <span>{priceFormatter.format(totalItemsCost)}</span>
             </div>
             <div>
               <span>Entrega</span>
-              <span>R$ {deliveryCost}</span>
+              <span>{priceFormatter.format(deliveryCost)}</span>
             </div>
             <div>
               <span>Total</span>
-              <span>R$ {totalCost}</span>
+              <span>{priceFormatter.format(totalCost)}</span>
             </div>
           </Totals>
           <NavLink to="/success">

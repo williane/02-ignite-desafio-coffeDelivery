@@ -12,6 +12,7 @@ import { ShoppingCart } from 'phosphor-react'
 import { Counter } from '../../../../components/counter'
 import { useContext, useState } from 'react'
 import { CartContext } from '../../../../contexts/cartContext'
+import { numberFormatter } from '../../../../utils/numberFormatter'
 
 type tag = 'tradicional' | 'especial' | 'com leite' | 'alcoólico' | 'gelado'
 
@@ -57,7 +58,7 @@ export function CoffeCard({ coffe }: CoffeCardProps) {
       <Description>{coffe.description}</Description>
       <Buy>
         <span>R$</span>
-        <span>{coffe.cost}</span>
+        <span>{numberFormatter.format(coffe.cost)}</span>
         <Counter
           height={38}
           iconSize={14}
