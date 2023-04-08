@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const HeaderConteiner = styled.nav`
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   display: flex;

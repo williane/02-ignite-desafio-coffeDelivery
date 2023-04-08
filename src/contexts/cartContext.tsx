@@ -27,7 +27,22 @@ interface CartContextProviderProps {
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cart, setCart] = useState<CartProps[]>([])
 
-  console.log(cart)
+  function updateCartQuantity(
+    state: CartProps[],
+    coffeName: string,
+    quantity: number,
+  ) {
+    const newState = state.map((coffe) => {
+      if (coffe.coffeName === coffeName) {
+        coffe.quantity += quantity
+        coffe.totalCost = coffe.unitCost * quantity
+      }
+
+      return coffe
+    })
+
+    return newState
+  }
 
   function addNewCoffeOnCart(
     coffeName: string,
@@ -35,10 +50,23 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     quantity: number,
     unitCost: number,
   ) {
-    setCart((state) => [
-      ...state,
-      { coffeName, image, quantity, unitCost, totalCost: quantity * unitCost },
-    ])
+    setCart((state) => {
+      const existCoffeOnCart =
+        state.filter((coffe) => coffe.coffeName === coffeName).length > 0
+      if (existCoffeOnCart) {
+        return updateCartQuantity(state, coffeName, quantity)
+      }
+      return [
+        ...state,
+        {
+          coffeName,
+          image,
+          quantity,
+          unitCost,
+          totalCost: quantity * unitCost,
+        },
+      ]
+    })
   }
 
   return (

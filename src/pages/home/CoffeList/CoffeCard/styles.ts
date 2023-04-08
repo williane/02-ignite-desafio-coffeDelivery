@@ -121,7 +121,6 @@ export const CartButton = styled.button`
   margin-left: 0.5rem;
 
   &:disabled {
-    opacity: 0.7;
     cursor: not-allowed;
   }
 
