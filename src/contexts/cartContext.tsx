@@ -35,7 +35,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     const newState = state.map((coffe) => {
       if (coffe.coffeName === coffeName) {
         coffe.quantity += quantity
-        coffe.totalCost = coffe.unitCost * quantity
+        coffe.totalCost = coffe.unitCost * coffe.quantity
       }
 
       return coffe
@@ -50,14 +50,14 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     quantity: number,
     unitCost: number,
   ) {
-    setCart((state) => {
-      const existCoffeOnCart =
-        state.filter((coffe) => coffe.coffeName === coffeName).length > 0
-      if (existCoffeOnCart) {
-        return updateCartQuantity(state, coffeName, quantity)
-      }
-      return [
-        ...state,
+    const existOnCart =
+      cart.filter((coffe) => coffe.coffeName === coffeName).length > 0
+
+    if (existOnCart) {
+      setCart(updateCartQuantity(cart, coffeName, quantity))
+    } else {
+      setCart([
+        ...cart,
         {
           coffeName,
           image,
@@ -65,8 +65,8 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
           unitCost,
           totalCost: quantity * unitCost,
         },
-      ]
-    })
+      ])
+    }
   }
 
   return (
