@@ -16,6 +16,7 @@ interface CartContextProps {
     quantity: number,
     unitCost: number,
   ) => void
+  removeCoffeCart: (coffeName: string, quantity: number) => void
 }
 
 export const CartContext = createContext({} as CartContextProps)
@@ -31,10 +32,15 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     state: CartProps[],
     coffeName: string,
     quantity: number,
+    type: 'add' | 'remove',
   ) {
     const newState = state.map((coffe) => {
       if (coffe.coffeName === coffeName) {
-        coffe.quantity += quantity
+        if (type === 'add') {
+          coffe.quantity += quantity
+        } else {
+          coffe.quantity >= 1 && (coffe.quantity -= quantity)
+        }
         coffe.totalCost = coffe.unitCost * coffe.quantity
       }
 
@@ -54,7 +60,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
       cart.filter((coffe) => coffe.coffeName === coffeName).length > 0
 
     if (existOnCart) {
-      setCart(updateCartQuantity(cart, coffeName, quantity))
+      setCart(updateCartQuantity(cart, coffeName, quantity, 'add'))
     } else {
       setCart([
         ...cart,
@@ -69,8 +75,26 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     }
   }
 
+  function removeCoffeCart(coffeName: string, quantity?: number) {
+    const newQuantity =
+      quantity ||
+      cart.filter((coffe) => coffe.coffeName === coffeName)[0].quantity
+
+    const coffeQuantity = cart.filter(
+      (coffe) => coffe.coffeName === coffeName,
+    )[0].quantity
+
+    if (newQuantity === coffeQuantity) {
+      const newCart = cart.filter((coffe) => coffe.coffeName !== coffeName)
+
+      setCart(newCart)
+    } else {
+      setCart(updateCartQuantity(cart, coffeName, newQuantity, 'remove'))
+    }
+  }
+
   return (
-    <CartContext.Provider value={{ cart, addNewCoffeOnCart }}>
+    <CartContext.Provider value={{ cart, addNewCoffeOnCart, removeCoffeCart }}>
       {children}
     </CartContext.Provider>
   )

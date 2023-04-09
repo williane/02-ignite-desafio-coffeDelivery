@@ -26,13 +26,15 @@ interface CoffeCardProps {
 }
 
 export function CoffeCard({ coffe }: CoffeCardProps) {
-  const { addNewCoffeOnCart } = useContext(CartContext)
+  const { addNewCoffeOnCart, removeCoffeCart } = useContext(CartContext)
 
   function handleAddNewQuantityOnCart() {
     addNewCoffeOnCart(coffe.coffeName, coffe.image, 1, coffe.unitCost)
   }
 
-  function handleRemoveQuantityOnCart() {}
+  function handleRemoveQuantityOnCart() {
+    removeCoffeCart(coffe.coffeName, 1)
+  }
 
   return (
     <>
@@ -49,7 +51,7 @@ export function CoffeCard({ coffe }: CoffeCardProps) {
                 onAdd={handleAddNewQuantityOnCart}
                 onRemove={handleRemoveQuantityOnCart}
               />
-              <TrashButton>
+              <TrashButton onClick={() => removeCoffeCart(coffe.coffeName, 0)}>
                 <Trash size={16} color="#8047F8" />
                 remover
               </TrashButton>
