@@ -51,7 +51,9 @@ export function CoffeCard({ coffe }: CoffeCardProps) {
                 onAdd={handleAddNewQuantityOnCart}
                 onRemove={handleRemoveQuantityOnCart}
               />
-              <TrashButton onClick={() => removeCoffeCart(coffe.coffeName, 0)}>
+              <TrashButton
+                onClick={() => removeCoffeCart(coffe.coffeName, coffe.quantity)}
+              >
                 <Trash size={16} color="#8047F8" />
                 remover
               </TrashButton>

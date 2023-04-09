@@ -75,21 +75,17 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     }
   }
 
-  function removeCoffeCart(coffeName: string, quantity?: number) {
-    const newQuantity =
-      quantity ||
-      cart.filter((coffe) => coffe.coffeName === coffeName)[0].quantity
-
+  function removeCoffeCart(coffeName: string, quantity: number) {
     const coffeQuantity = cart.filter(
       (coffe) => coffe.coffeName === coffeName,
     )[0].quantity
 
-    if (newQuantity === coffeQuantity) {
+    if (quantity === coffeQuantity) {
       const newCart = cart.filter((coffe) => coffe.coffeName !== coffeName)
 
       setCart(newCart)
     } else {
-      setCart(updateCartQuantity(cart, coffeName, newQuantity, 'remove'))
+      setCart(updateCartQuantity(cart, coffeName, quantity, 'remove'))
     }
   }
 
