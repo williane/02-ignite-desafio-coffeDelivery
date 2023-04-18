@@ -48,7 +48,7 @@ export const Location = styled.div`
   }
 `
 
-export const Cart = styled.div`
+export const Cart = styled.button`
   position: relative;
   display: flex;
   align-items: center;
@@ -61,6 +61,12 @@ export const Cart = styled.div`
 
   background-color: ${(props) => props.theme['yellow-light']};
   border-radius: 6px;
+  border: none;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 `
 
 export const CartQuantity = styled.div`

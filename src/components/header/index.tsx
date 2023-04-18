@@ -15,6 +15,13 @@ import { CartContext } from '../../contexts/cartContext'
 export function Header() {
   const { cart } = useContext(CartContext)
   const totalCart = cart.length
+  const isCartDisabled = totalCart <= 0
+
+  function handleDisableCart(event) {
+    if (isCartDisabled) {
+      event.preventDefault()
+    }
+  }
 
   return (
     <HeaderConteiner>
@@ -26,8 +33,8 @@ export function Header() {
           <MapPin size={22} color={defaultTheme.purple} weight="fill" />
           <span>Porto Alegre, RS</span>
         </Location>
-        <NavLink to="/checkout">
-          <Cart>
+        <NavLink to="/checkout" onClick={handleDisableCart}>
+          <Cart disabled={isCartDisabled}>
             <ShoppingCart
               size={22}
               color={defaultTheme['yellow-dark']}

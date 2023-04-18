@@ -106,6 +106,11 @@ export const PayTypeButton = styled.button<PayTypeButtonProps>`
     css`
       border: 1px solid ${(props) => props.theme.purple};
     `}
+
+  &:hover {
+    cursor: pointer;
+    background-color: ${(props) => props.theme['base-hover']};
+  }
 `
 
 export const RightWrapper = styled(BaseWrapper)``
