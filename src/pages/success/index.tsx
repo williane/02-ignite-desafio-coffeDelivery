@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import {
   Container,
   Detail,
@@ -9,8 +10,10 @@ import {
 } from './styles'
 import SuccessImage from '../../assets/successImage.svg'
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import { CheckoutContext } from '../../contexts/checkoutContext'
 
 export function Success() {
+  const { address, paymentMethod } = useContext(CheckoutContext)
   return (
     <Container>
       <Title>
@@ -25,9 +28,10 @@ export function Success() {
             </Icon>
             <Detail>
               <p>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                Entrega em{' '}
+                <strong>{`${address.street}, ${address.number}`}</strong>
               </p>
-              <p>Farrapos - Porto Alegre, RS</p>
+              <p>{`${address.district} - ${address.city}, ${address.state}`}</p>
             </Detail>
           </Information>
           <Information>
@@ -48,7 +52,7 @@ export function Success() {
             <Detail>
               <p>Pagamento na entrega</p>
               <p>
-                <strong>Cartão de Crédito</strong>
+                <strong>{paymentMethod}</strong>
               </p>
             </Detail>
           </Information>

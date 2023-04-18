@@ -10,43 +10,6 @@ export const Container = styled.main`
   width: 100%;
   height: 100%;
 `
-
-export const BaseWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  width: 40rem;
-  height: 39.3125rem;
-`
-
-export const LeftWrapper = styled(BaseWrapper)``
-
-export const Title = styled.span`
-  font-family: 'Baloo 2';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 1.125rem;
-  line-height: 130%;
-
-  color: ${(props) => props.theme['base-subtitle']};
-`
-
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-
-  gap: 1rem;
-
-  width: 100%;
-  height: 23.25rem;
-
-  padding: 2.5rem;
-  margin-top: 0.9375rem;
-
-  background-color: ${(props) => props.theme['base-card']};
-  border-radius: 6px;
-`
-
 export const CardTitle = styled.div`
   display: flex;
 
@@ -66,40 +29,25 @@ export const CardTitle = styled.div`
     font-size: 1rem;
   }
 `
-const INPUT_TYPE = {
-  street: '35rem',
-  zip: '12.5rem',
-  number: '12.5rem',
-  complement: '21.75rem',
-  city: '17.25rem',
-  state: '3.75rem',
-  district: '12.5rem',
-}
 
-interface InputProps {
-  inputType: keyof typeof INPUT_TYPE
-}
-
-export const InputWrapper = styled.div`
+export const BaseWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 
-  gap: 0.75rem;
+  width: 40rem;
+  height: 39.3125rem;
 `
 
-export const Input = styled.input<InputProps>`
-  display: flex;
-  width: ${(props) => INPUT_TYPE[props.inputType]};
-  max-height: 2.625rem;
+export const LeftWrapper = styled(BaseWrapper)``
 
-  padding: 0.75rem;
+export const Title = styled.span`
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 130%;
 
-  background: ${(props) => props.theme['base-input']};
-  border: 1px solid ${(props) => props.theme['base-button']};
-  border-radius: 4px;
-
-  font-size: 0.875rem;
-  line-height: 1.125rem;
+  color: ${(props) => props.theme['base-subtitle']};
 `
 
 export const PayCard = styled.div`
