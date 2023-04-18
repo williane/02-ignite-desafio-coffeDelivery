@@ -27,7 +27,7 @@ export function CheckoutContextProvider({
   children,
 }: CheckoutContextProviderProps) {
   const [address, setAddress] = useState<AddressProps>()
-  const [paymentMethod, setPaymentMethod] = useState('')
+  const [paymentMethod, setPaymentMethod] = useState('Cartão de Crédito')
 
   console.log(address)
 

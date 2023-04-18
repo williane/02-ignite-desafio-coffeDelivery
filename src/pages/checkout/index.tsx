@@ -21,12 +21,11 @@ import {
 import { priceFormatter } from '../../utils/numberFormatter'
 import { AddressForm } from './AddressForm'
 import { CheckoutContext } from '../../contexts/checkoutContext'
-import { useNavigate } from 'react-router-dom'
 
 export function Checkout() {
   const { cart } = useContext(CartContext)
   const { getPaymentMethod } = useContext(CheckoutContext)
-  const navigate = useNavigate()
+
   const [paymentType, setPaymentType] = useState('credit')
 
   const formRef = useRef<HTMLFormElement | null>(null)
@@ -36,7 +35,6 @@ export function Checkout() {
       formRef.current.dispatchEvent(
         new Event('submit', { cancelable: true, bubbles: true }),
       )
-      navigate('/success')
     }
   }
 

@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { MapPinLine } from 'phosphor-react'
 import { CardTitle, Form, Input, InputWrapper } from './styles'
 import { MutableRefObject, useContext } from 'react'
 import { CheckoutContext } from '../../../contexts/checkoutContext'
+import { CartContext } from '../../../contexts/cartContext'
 
 interface AddressFormProps {
   formRef: MutableRefObject<HTMLFormElement | null>
@@ -19,10 +21,15 @@ interface AddressProps {
 }
 
 export function AddressForm({ formRef }: AddressFormProps) {
+  const { removeCart } = useContext(CartContext)
   const { getAddress } = useContext(CheckoutContext)
-  const { register, handleSubmit } = useForm<AddressProps>()
+  const { register, handleSubmit, reset } = useForm<AddressProps>()
+  const navigate = useNavigate()
   const onSubmit = (data: AddressProps) => {
     getAddress(data)
+    reset()
+    removeCart()
+    navigate('/success')
   }
 
   return (

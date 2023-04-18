@@ -17,6 +17,7 @@ interface CartContextProps {
     unitCost: number,
   ) => void
   removeCoffeCart: (coffeName: string, quantity: number) => void
+  removeCart: () => void
 }
 
 export const CartContext = createContext({} as CartContextProps)
@@ -89,8 +90,14 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     }
   }
 
+  function removeCart() {
+    setCart([])
+  }
+
   return (
-    <CartContext.Provider value={{ cart, addNewCoffeOnCart, removeCoffeCart }}>
+    <CartContext.Provider
+      value={{ cart, addNewCoffeOnCart, removeCoffeCart, removeCart }}
+    >
       {children}
     </CartContext.Provider>
   )
