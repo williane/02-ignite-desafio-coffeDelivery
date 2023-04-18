@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Container = styled.main`
   display: flex;
@@ -73,26 +73,39 @@ export const ButtonWrapper = styled.div`
 
   width: 100%;
   height: 3.1875rem;
+`
+interface PayTypeButtonProps {
+  option: string
+  payType: string
+}
 
-  & > button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+export const PayTypeButton = styled.button<PayTypeButtonProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    gap: 0.75rem;
+  gap: 0.75rem;
 
-    background: ${(props) => props.theme['base-button']};
-    border: none;
-    border-radius: 6px;
-    padding: 1rem;
+  background: ${(props) =>
+    props.option === props.payType
+      ? props.theme['purple-light']
+      : props.theme['base-button']};
+  border: none;
+  border-radius: 6px;
+  padding: 1rem;
 
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    color: ${(props) => props.theme['base-text']};
-  }
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: ${(props) => props.theme['base-text']};
+
+  ${(props) =>
+    props.option === props.payType &&
+    css`
+      border: 1px solid ${(props) => props.theme.purple};
+    `}
 `
 
 export const RightWrapper = styled(BaseWrapper)``

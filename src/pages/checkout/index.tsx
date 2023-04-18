@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react'
+import { useContext, useRef, useState } from 'react'
 
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
 import { CoffeCard } from './CoffeCard'
@@ -12,6 +12,7 @@ import {
   Container,
   LeftWrapper,
   PayCard,
+  PayTypeButton,
   RightWrapper,
   Title,
   Totals,
@@ -26,6 +27,7 @@ export function Checkout() {
   const { cart } = useContext(CartContext)
   const { getPaymentMethod } = useContext(CheckoutContext)
   const navigate = useNavigate()
+  const [paymentType, setPaymentType] = useState('credit')
 
   const formRef = useRef<HTMLFormElement | null>(null)
 
@@ -44,6 +46,17 @@ export function Checkout() {
   const deliveryCost = 3.5
   const totalCost = totalItemsCost + deliveryCost
 
+  const paymentTypes = {
+    credit: 'Cartão de Crédito',
+    debit: 'Cartão de Débito',
+    money: 'Dinheiro',
+  }
+
+  function handlePaymentType(payType: keyof typeof paymentTypes) {
+    getPaymentMethod(paymentTypes[payType])
+    setPaymentType(payType)
+  }
+
   return (
     <Container>
       <LeftWrapper>
@@ -60,18 +73,30 @@ export function Checkout() {
             </div>
           </CardTitle>
           <ButtonWrapper>
-            <button onClick={() => getPaymentMethod('Cartão de Crédito')}>
+            <PayTypeButton
+              onClick={() => handlePaymentType('credit')}
+              option="credit"
+              payType={paymentType}
+            >
               <CreditCard size={16} color="#8047F8" />
               cartão de crédito
-            </button>
-            <button onClick={() => getPaymentMethod('Cartão de Débito')}>
+            </PayTypeButton>
+            <PayTypeButton
+              onClick={() => handlePaymentType('debit')}
+              option="debit"
+              payType={paymentType}
+            >
               <Bank size={16} color="#8047F8" />
               cartão de débito
-            </button>
-            <button onClick={() => getPaymentMethod('Dinheiro')}>
+            </PayTypeButton>
+            <PayTypeButton
+              onClick={() => handlePaymentType('money')}
+              option="money"
+              payType={paymentType}
+            >
               <Money size={16} color="#8047F8" />
               dinheiro
-            </button>
+            </PayTypeButton>
           </ButtonWrapper>
         </PayCard>
       </LeftWrapper>
