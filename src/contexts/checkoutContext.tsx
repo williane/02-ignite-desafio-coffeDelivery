@@ -1,10 +1,10 @@
 import { ReactNode, createContext, useState } from 'react'
 
 interface AddressProps {
-  zip: number
+  zip: string
   street: string
   number: string
-  complement: string
+  complement?: string
   district: string
   state: string
   city: string
@@ -26,10 +26,8 @@ interface CheckoutContextProviderProps {
 export function CheckoutContextProvider({
   children,
 }: CheckoutContextProviderProps) {
-  const [address, setAddress] = useState<AddressProps>()
+  const [address, setAddress] = useState({} as AddressProps)
   const [paymentMethod, setPaymentMethod] = useState('Cartão de Crédito')
-
-  console.log(address)
 
   function getAddress(address: AddressProps) {
     setAddress(address)

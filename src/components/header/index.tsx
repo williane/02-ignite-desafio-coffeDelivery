@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { MouseEvent, useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import Logo from '../../assets/logo.svg'
@@ -17,7 +17,7 @@ export function Header() {
   const totalCart = cart.length
   const isCartDisabled = totalCart <= 0
 
-  function handleDisableCart(event) {
+  function handleDisableCart(event: MouseEvent) {
     if (isCartDisabled) {
       event.preventDefault()
     }

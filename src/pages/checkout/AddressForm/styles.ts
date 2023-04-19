@@ -56,6 +56,16 @@ export const InputWrapper = styled.div`
   gap: 0.75rem;
 `
 
+export const InputError = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & > span {
+    color: red;
+    font-size: 0.75rem;
+  }
+`
+
 export const Input = styled.input<InputProps>`
   display: flex;
   width: ${(props) => INPUT_TYPE[props.inputType]};
